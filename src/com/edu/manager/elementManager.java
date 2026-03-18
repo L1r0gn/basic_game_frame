@@ -1,5 +1,7 @@
 package com.edu.manager;
 
+import com.edu.element.elementObj;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,32 +9,31 @@ import java.util.Map;
 
 /**
  * element manager - store all element and provide approaches to give view and controller to get data
- *
  * @author L1r0gn
  */
 public class elementManager {
-    private Map<GameElement, List<ElementObj>> gameElements;
-    public Map<GameElement, List<ElementObj>> getGameElements(){
+    private Map<gameElement, List<elementObj>> gameElements;
+    public Map<gameElement, List<elementObj>> getGameElements(){
         return gameElements;
     }
     /**
      * Add elements
      *
-     * @param ElementObj obj
-     * @param GameElement ge
+     * @param obj elementObj
+     * @param ge gameElement
      */
-    public void addElements(ElementObj obj,GameElement ge){
-//        List<ElementObj> list = gameElements.get(ge);
+    public void addElements(elementObj obj, gameElement ge){
+//        List<elementObj> list = gameElements.get(ge);
 //        list.add(obj);
         gameElements.get(ge).add(obj); // add object to map and store by key
     }
     /**
      * Return list by key, get one element
      *
-     * @param GameElement ge
-     * @return List<ElementObj>
+     * @param  ge gameElement
+     * @return List<elementObj>
      */
-    public List<ElementObj> getElementByKey(GameElement ge){
+    public List<elementObj> getElementByKey(gameElement ge){
         return gameElements.get(ge);
     }
 
@@ -64,13 +65,16 @@ public class elementManager {
     /**
      * prepare for future to rewrite init - used for function extension
      */
-    public static void init() { // do instance here
-        gameElements = new HashMap<GameElement, list<ElementObj>>();
-        // put each elements into map
-        gameElements.put(GameElement.PLAY,new ArrayList<ElementObj>());
-        gameElements.put(GameElement.MAPS,new ArrayList<ElementObj>());
-        gameElements.put(GameElement.ENEMY,new ArrayList<ElementObj>());
-        gameElements.put(GameElement.BOSS,new ArrayList<ElementObj>());
+    public void init() { // 实例化
+        gameElements = new HashMap<gameElement, List<elementObj>>();
+        // 将元素集合放入map中
+//        gameElements.put(gameElement.PLAY,new ArrayList<elementObj>());
+//        gameElements.put(gameElement.MAPS,new ArrayList<elementObj>());
+//        gameElements.put(gameElement.ENEMY,new ArrayList<elementObj>());
+//        gameElements.put(gameElement.BOSS,new ArrayList<elementObj>());
+        for(gameElement ge : gameElement.values()){
+            gameElements.put(ge,new ArrayList<elementObj>());
+        }
 
     }
 
